@@ -96,14 +96,14 @@
 	{% if is_paginated %}
 	<tr><td>
 			{% if page_obj.has_previous %}
-			<i class="fas fa-arrow-right"><a href="?page={{ page_obj.previous_page_number }}" class="pager-prev{% if not page_obj.has_previous %} inactive{% endif %}">&laquo;</a></i>
+			<a href="?page={{ page_obj.previous_page_number }}" class="pager-prev{% if not page_obj.has_previous %} inactive{% endif %}">&laquo;Previous Page</a>
 			{% endif %}
 		</td>
 		<td></td>
 		<td></td>
 		<td>
 			{% if page_obj.has_next %}
-				<i class="fas fa-arrow-right"><a href="?page={{ page_obj.next_page_number }}" class="pager-next{% if not page_obj.has_next %} inactive{% endif %}">&raquo;</a></i>
+			<a href="?page={{ page_obj.next_page_number }}" class="pager-next{% if not page_obj.has_next %} inactive{% endif %}">Next Page&raquo;</a>
 			{% endif %}
 		</td>
 	</tr>
