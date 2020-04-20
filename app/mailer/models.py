@@ -11,16 +11,12 @@ class Company(models.Model):
     bic = models.CharField(max_length=150, blank=True)
 
     def get_order_count(self):
-        orders = 0
-        for order in self.orders.all():
-            orders += 1
+        
+        orders = self.orders.count()
         return orders
 
     def get_order_sum(self):
-        total_sum = 0
-        for contact in self.contacts.all():
-            for order in contact.orders.all():
-                total_sum += order.total
+        total_sum = sum([a.total for a in Order.objects.filter(company=self)])
         return total_sum
 
 
@@ -32,10 +28,10 @@ class Contact(models.Model):
     email = models.EmailField()
 
     def get_order_count(self):
-        orders = 0
-        for order in self.orders.all():
-            orders += 1
+        
+        orders = self.orders.count()
         return orders
+
 
 
 @python_2_unicode_compatible

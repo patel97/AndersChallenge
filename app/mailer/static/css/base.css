@@ -1,0 +1,24 @@
+.orders-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .orders-table td, #customers th {
+    border: 1px solid #bbb;
+    padding: 8px;
+  }
+
+  .orders-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #00DD;
+    color: white;
+  }
+  .orders-row{
+      background-color: #FF0000;
+      color:white;
+  }
+  .orders-contact{
+      text-align: center;
+  }

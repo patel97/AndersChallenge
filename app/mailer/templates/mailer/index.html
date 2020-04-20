@@ -3,9 +3,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
 	<title>Greetings Cards Spammers</title>
 	<script src="{% static "js/jquery-2.1.1.js" %}"></script>
 	<script>
+
 	$(document).ready(function(){
 		$("table tr").hover(function(){
 				$("table *").css("background-color", ""); // remove background color from everything (un-hover)
@@ -86,23 +88,23 @@
 		});
 		});
 	});
+
 	</script>
 </head>
 <body>
-	<div style="width:1020px; margin: 0 auto; border:1px solid blue;">
-	<table width="1020">
+	<table width="1020" class="orders-table">
 	{% if is_paginated %}
 	<tr><td>
-		{% if page_obj.has_previous %}
-		<a href="?page={{ page_obj.previous_page_number }}" class="pager-prev{% if not page_obj.has_previous %} inactive{% endif %}">&laquo;</a>
-		{% endif %}
+			{% if page_obj.has_previous %}
+			<i class="fas fa-arrow-right"><a href="?page={{ page_obj.previous_page_number }}" class="pager-prev{% if not page_obj.has_previous %} inactive{% endif %}">&laquo;</a></i>
+			{% endif %}
 		</td>
 		<td></td>
 		<td></td>
 		<td>
-		{% if page_obj.has_next %}
-			<a href="?page={{ page_obj.next_page_number }}" class="pager-next{% if not page_obj.has_next %} inactive{% endif %}">&raquo;</a>
-		{% endif %}
+			{% if page_obj.has_next %}
+				<i class="fas fa-arrow-right"><a href="?page={{ page_obj.next_page_number }}" class="pager-next{% if not page_obj.has_next %} inactive{% endif %}">&raquo;</a></i>
+			{% endif %}
 		</td>
 	</tr>
 	{% endif %}
@@ -113,7 +115,7 @@
 		<th>Select</th>
 	</tr>
 		{% for company in company_list %}
-		<tr>
+		<tr class="orders-row">
 			<td>{{ company.name }}</td>
 			<td>{{ company.get_order_count }}</td>
 			<td>{{ company.get_order_sum|floatformat:2 }}</td>
@@ -121,8 +123,8 @@
 		</tr>
 			{% for contact in company.contacts.all %}
 			<tr>
-				<td>&nbsp;</td>
-				<td>{{ contact.first_name }} {{ contact.last_name }}</td>
+				<!-- <td>&nbsp;</td> -->
+				<td class="orders-contact">{{ contact.first_name }} {{ contact.last_name }}</td>
 				<td>Orders: {{ contact.get_order_count }}</td>
 				<td></td>
 			</tr>
